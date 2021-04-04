@@ -2,12 +2,24 @@ package com.pedro.vacinaagora.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
 public class Pessoa {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
     private String cpf;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataNasc;
 
     public Pessoa() {
