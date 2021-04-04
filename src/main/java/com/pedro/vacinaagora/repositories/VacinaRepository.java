@@ -4,6 +4,6 @@ import com.pedro.vacinaagora.entities.Vacina;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface VacinaRepository extends JpaRepository<Vacina, Integer> {
+public interface VacinaRepository extends JpaRepository<Vacina, Long> {
     
 }
