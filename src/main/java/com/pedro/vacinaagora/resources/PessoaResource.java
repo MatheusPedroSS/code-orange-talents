@@ -20,7 +20,7 @@ public class PessoaResource {
     @Autowired
     private PessoaService service;
 
-    @PostMapping
+    @PostMapping(value = "cadPessoa")
     public ResponseEntity<Void> insert(@RequestBody Pessoa obj) {
         service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -28,7 +28,7 @@ public class PessoaResource {
         return ResponseEntity.created(uri).build();
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "cadPessoa/{id}")
     public ResponseEntity<Pessoa> find(@PathVariable Long id) {
         Pessoa obj = service.find(id);
         return ResponseEntity.ok().body(obj);
