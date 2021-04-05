@@ -1,6 +1,8 @@
 package com.pedro.vacinaagora.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +23,8 @@ public class Pessoa {
     
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataNasc;
+
+    private List<Vacina> vacinas = new ArrayList<>();
 
     public Pessoa() {
     }
@@ -70,6 +74,14 @@ public class Pessoa {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
+    }
+
+    public List<Vacina> getVacinas() {
+        return vacinas;
+    }
+
+    public void setVacinas(List<Vacina> vacinas) {
+        this.vacinas = vacinas;
     }
 
     @Override
