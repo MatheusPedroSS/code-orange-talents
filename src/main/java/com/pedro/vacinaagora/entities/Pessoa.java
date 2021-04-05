@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,12 +27,18 @@ public class Pessoa {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataNasc;
 
+    @ManyToMany
+    @JoinTable(
+        name = "PESSOA_VACINA",
+        joinColumns = @JoinColumn(name = "pessoa_id"),
+        inverseJoinColumns = @JoinColumn(name = "vacina_id")
+    )
     private List<Vacina> vacinas = new ArrayList<>();
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String email, String cpf, Date dataNasc) {
+    public Pessoa(Long id, String nome, String email, String cpf, Date dataNasc) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -22,15 +23,19 @@ public class Vacina {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataVacinacao;
 
-    private List<Vacina> vacinas = new ArrayList<>();
+    @ManyToMany(mappedBy = "vacinas")
+    private List<Pessoa> pessoas = new ArrayList<>();
 
     public Vacina() {
 
     }
 
-    public Vacina(String nome, Date dataVacinacao) {
+    public Vacina(String nome, Date dataVacinacao, Long pessoaId) {
         this.nome = nome;
         this.dataVacinacao = dataVacinacao;
+        Pessoa pessoa = new Pessoa();
+        pessoa.setId(pessoaId);
+        this.pessoas.add(pessoa);
     }
 
     public Long getId() {
@@ -57,12 +62,12 @@ public class Vacina {
         this.dataVacinacao = dataVacinacao;
     }
 
-    public List<Vacina> getVacinas() {
-        return vacinas;
+    public List<Pessoa> getPessoas() {
+        return pessoas;
     }
 
-    public void setVacinas(List<Vacina> vacinas) {
-        this.vacinas = vacinas;
+    public void setVacinas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
 
     @Override
