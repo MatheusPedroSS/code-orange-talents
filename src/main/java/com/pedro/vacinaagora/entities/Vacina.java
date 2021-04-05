@@ -1,9 +1,15 @@
 package com.pedro.vacinaagora.entities;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Vacina {
@@ -12,13 +18,19 @@ public class Vacina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dataVacinacao;
+
+    private List<Vacina> vacinas = new ArrayList<>();
 
     public Vacina() {
 
     }
 
-    public Vacina(String nome) {
+    public Vacina(String nome, Date dataVacinacao) {
         this.nome = nome;
+        this.dataVacinacao = dataVacinacao;
     }
 
     public Long getId() {
@@ -35,6 +47,22 @@ public class Vacina {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Date getDataVacinacao() {
+        return dataVacinacao;
+    }
+
+    public void setDataVacinacao(Date dataVacinacao) {
+        this.dataVacinacao = dataVacinacao;
+    }
+
+    public List<Vacina> getVacinas() {
+        return vacinas;
+    }
+
+    public void setVacinas(List<Vacina> vacinas) {
+        this.vacinas = vacinas;
     }
 
     @Override
