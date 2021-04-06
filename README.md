@@ -1,8 +1,8 @@
 # code-orange-talents
 
-## Primeiros Passos:
+## OBS:
 
-Para utilizar verificar o funcionamento da API o ideial e utilizar o Postman pra isso.
+Para testa a API e necessario o Postman ou Insomnia.
 
 ### Rotas:
 
