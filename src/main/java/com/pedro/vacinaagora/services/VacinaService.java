@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.pedro.vacinaagora.entities.Vacina;
-import com.pedro.vacinaagora.repositories.PessoaRepository;
 import com.pedro.vacinaagora.repositories.VacinaRepository;
 import com.pedro.vacinaagora.services.exceptions.DataIntegrityException;
 import com.pedro.vacinaagora.services.exceptions.ObjectNotFoundException;
